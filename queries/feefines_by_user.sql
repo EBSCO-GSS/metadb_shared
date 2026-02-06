@@ -8,8 +8,7 @@ RETURNS TABLE(
   user_barcode text,
   user_patron_group text,
   fee_fine_total numeric,
-  fee_fine_owner text
-)
+  fee_fine_owner text)
 AS $$
 select
   jsonb_extract_path_text(users."jsonb",'personal','lastName') || ' , ' || jsonb_extract_path_text(users."jsonb",'personal','firstName') as user_name,
