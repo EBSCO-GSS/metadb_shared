@@ -2,7 +2,5 @@
     "displayName": "Total fees and fines by user and fee/fine owner",
     "description": "Lists all users with an open fee/fine in FOLIO; includes the last name, first name, user barcode, user patron group, and total fee/fine by fee/fine owner",
     "instructions": "None",
-    "parameters": [
-
-    ]
+    "parameters": []
 }
