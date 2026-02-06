@@ -1,4 +1,4 @@
---metadb: function fee/fines_by_user 
+--metadb: function feefines_by_user 
 
 DROP FUNCTION IF EXISTS feefines_by_user;
 
