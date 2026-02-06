@@ -2,7 +2,7 @@
 
 DROP FUNCTION IF EXISTS feefines_by_user;
 
-CREATE FUNCTION feefine_by_user
+CREATE FUNCTION feefines_by_user
 RETURNS TABLE (
   user_name text,
   user_barcode text,
