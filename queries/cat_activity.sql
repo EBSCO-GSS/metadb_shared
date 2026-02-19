@@ -47,12 +47,13 @@ created as (
 	group by created_by
 )
 select
-  jsonb_extract_path_text(users."jsonb",'personal','lastName')|| ', '|| jsonb_extract_path_text(users."jsonb",'personal','firstName') as user_name,
+  jsonb_extract_path_text(users."jsonb",'personal','lastName')|| ', '|| jsonb_extract_path_text(users."jsonb",'personal','firstName') as personal_name,
   coalesce(created.num_created,'0') as int_rec_created,
   coalesce(updates.num_updated,'0') as int_rec_updated
 from updates
 	left join created on created.created_by = updates.updated_by
 	left join folio_users.users as users on users.id = updates.updated_by
+order by personal_name asc
 $$
 language sql
 stable
