@@ -1,0 +1,19 @@
+{
+    "displayName": "Instance record activity by user",
+    "description": "A count of all instance records created and updated by user during a set time period.",
+    "instructions": "Enter a start and end date, both inclusive",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Start date",
+            "type": "date",
+            "required": true
+        },
+        {
+            "name": "end_date",
+            "displayName": "End date",
+            "type": "date",
+            "required": true
+        }
+    ]
+}
