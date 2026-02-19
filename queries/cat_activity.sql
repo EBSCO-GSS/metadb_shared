@@ -53,7 +53,6 @@ select
 from updates
 	left join created on created.created_by = updates.updated_by
 	left join folio_users.users as users on users.id = updates.updated_by
-order by personal_name asc
 $$
 language sql
 stable
