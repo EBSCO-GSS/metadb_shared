@@ -47,7 +47,7 @@ created as (
 	group by created_by
 )
 select
-  jsonb_extract_path_text(users."jsonb",'personal','lastName')|| ', '|| jsonb_extract_path_text(users."jsonb",'personal','firstName') as personal_name,
+  jsonb_extract_path_text(users."jsonb",'personal','lastName')|| ', '|| jsonb_extract_path_text(users."jsonb",'personal','firstName') as user_name,
   coalesce(created.num_created,'0') as int_rec_created,
   coalesce(updates.num_updated,'0') as int_rec_updated
 from updates
