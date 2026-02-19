@@ -1,7 +1,7 @@
 {
     "displayName": "Cataloging activity by user",
     "description": "A count of all instance records created and updated by user during a set time period.",
-    "instructions": "Enter a start and end date, both inclusive",
+    "instructions": "Enter a start and end date where both are included in the count",
     "parameters": [
         {
             "name": "start_date",
