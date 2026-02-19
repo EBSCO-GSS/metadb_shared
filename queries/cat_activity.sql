@@ -3,8 +3,8 @@
 drop function if exists cat_activity;
 
 create function cat_activity(
-start_date date default '2026-01-07',
-end_date date default '2035-01-31'
+start_date date default '2026-01-29',
+end_date date default '2026-01-31'
 )
 returns table (
 user_name text,
