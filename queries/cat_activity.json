@@ -1,5 +1,5 @@
 {
-    "displayName": "Instance record activity by user",
+    "displayName": "Cataloging activity by user",
     "description": "A count of all instance records created and updated by user during a set time period.",
     "instructions": "Enter a start and end date, both inclusive",
     "parameters": [
