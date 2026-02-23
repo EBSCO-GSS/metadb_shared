@@ -51,7 +51,7 @@ select
   coalesce(created.num_created,'0') as int_rec_created,
   coalesce(updates.num_updated,'0') as int_rec_updated
 from updates
-	left join created on created.created_by = updates.updated_by
+	full outer join created on created.created_by = updates.updated_by
 	left join folio_users.users as users on users.id::text = updates.updated_by
 $$
 language sql
