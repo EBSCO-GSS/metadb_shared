@@ -3,7 +3,7 @@
 drop function if exists cat_activity;
 
 create function cat_activity(
-start_date date default NULL,
+start_date date default '2010-01-01,
 end_date date default CURRENT_DATE
 )
 returns table (
