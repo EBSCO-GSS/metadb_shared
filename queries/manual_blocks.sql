@@ -10,7 +10,7 @@ RETURNS TABLE(
 	patron_status text,
 	patron_exp_date date,
 	block_status text,
-	block_exp_date date,
+	block_exp_date text,
 	block_template text,
 	block_type text,
 	patron_message text
@@ -30,7 +30,7 @@ case
 	when jsonb_extract_path_text(m."jsonb",'expirationDate') is null then 'No Expiration Date'
 	else 'Open'
 end as block_status,
-jsonb_extract_path_text(m."jsonb",'expirationDate')::date as block_exp_date,
+to_char(jsonb_extract_path_text(m."jsonb",'expirationDate')::date,'YYYY-MM-DD') as block_exp_date,
 mbtt."name" as block_template,
 jsonb_extract_path_text(m."jsonb",'type') as block_type,
 jsonb_extract_path_text(m."jsonb",'patronMessage') as patron_message
