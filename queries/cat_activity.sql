@@ -18,7 +18,7 @@ with updates as (
 	select 
 		jsonb_extract_path_text(int."jsonb",'metadata','updatedDate')::timestamp as updated_date,
 		int.id as int_id, 
-		jsonb_extract_path_text(int."jsonb",'metadata','updatedByUserId')::uuid as updated_by
+		jsonb_extract_path_text(int."jsonb",'metadata','updatedByUserId') as updated_by
 	from folio_inventory.instance__ as int
 	where jsonb_extract_path_text(int."jsonb",'metadata','updatedDate')::timestamp >= start_date
 		and jsonb_extract_path_text(int."jsonb",'metadata','updatedDate')::timestamp < end_date + Interval '1 day'
@@ -35,7 +35,7 @@ created as (
 	select 
 		jsonb_extract_path_text(int2."jsonb",'metadata','createdDate')::timestamp as created_date,
 		int2.id as int_id, 
-		jsonb_extract_path_text(int2."jsonb",'metadata','createdByUserId')::uuid as created_by
+		jsonb_extract_path_text(int2."jsonb",'metadata','createdByUserId') as created_by
 	from folio_inventory.instance__ as int2
 	where jsonb_extract_path_text(int2."jsonb",'metadata','createdDate')::timestamp >= start_date 
 		and jsonb_extract_path_text(int2."jsonb",'metadata','createdDate')::timestamp < end_date + Interval '1 day' 
@@ -52,7 +52,7 @@ select
   coalesce(updates.num_updated,'0') as int_rec_updated
 from updates
 	left join created on created.created_by = updates.updated_by
-	left join folio_users.users as users on users.id = updates.updated_by
+	left join folio_users.users as users on users.id::text = updates.updated_by
 $$
 language sql
 stable
