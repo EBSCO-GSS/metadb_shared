@@ -8,7 +8,7 @@ RETURNS TABLE(
 	patron_barcode text,
 	patron_username text,
 	patron_status text,
-	patron_exp_date date,
+	patron_exp_date text,
 	block_status text,
 	block_exp_date text,
 	block_template text,
@@ -24,7 +24,7 @@ case
 	when jsonb_extract_path_text(u."jsonb",'active') = 'true' then 'Active'
 	else 'Inactive'
 end as patron_status,
-jsonb_extract_path_text(u."jsonb",'expirationDate')::date as patron_exp_date,
+to_char(jsonb_extract_path_text(u."jsonb",'expirationDate')::date,'YYYY-MM-DD') as patron_exp_date,
 case
 	when jsonb_extract_path_text(m."jsonb",'expirationDate')::date < Current_date then 'Expired'
 	when jsonb_extract_path_text(m."jsonb",'expirationDate') is null then 'No Expiration Date'
