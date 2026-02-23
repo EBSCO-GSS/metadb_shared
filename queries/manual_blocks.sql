@@ -24,7 +24,7 @@ case
 	when jsonb_extract_path_text(u."jsonb",'active') = 'true' then 'Active'
 	else 'Inactive'
 end as patron_status,
-to_char(jsonb_extract_path_text(u."jsonb",'expirationDate')::date,'yyyy-mm-dd') as patron_exp_date,
+jsonb_extract_path_text(u."jsonb",'expirationDate')::date as patron_exp_date,
 case
 	when jsonb_extract_path_text(m."jsonb",'expirationDate')::date < Current_date then 'Expired'
 	when jsonb_extract_path_text(m."jsonb",'expirationDate') is null then 'No Expiration Date'
