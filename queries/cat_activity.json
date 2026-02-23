@@ -7,13 +7,13 @@
             "name": "start_date",
             "displayName": "Start date",
             "type": "date",
-            "required": true
+            "required": false
         },
         {
             "name": "end_date",
             "displayName": "End date",
             "type": "date",
-            "required": true
+            "required": false
         }
     ]
 }
