@@ -8,9 +8,9 @@ RETURNS TABLE(
 	patron_barcode text,
 	patron_username text,
 	patron_status text,
-	patron_exp_date text,
+	patron_exp_date date,
 	block_status text,
-	block_exp_date text,
+	block_exp_date date,
 	block_template text,
 	block_type text,
 	patron_message text
