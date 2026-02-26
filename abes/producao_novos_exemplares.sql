@@ -7,16 +7,16 @@ CREATE FUNCTION producao_novos_exemplares(
     end_date date DEFAULT '2050-01-01'
 )
 RETURNS TABLE(
-    Usuario text,
-    AnoMes text,
+    Utilizateur text,
+    Annee_Mois text,
     Total text)
 AS $$
 select 
-    (u.jsonb->'personal'->>'firstName' || ' ' || (u.jsonb->'personal'->>'lastName')) AS Usuario,
+    (u.jsonb->'personal'->>'firstName' || ' ' || (u.jsonb->'personal'->>'lastName')) AS Utilizateur,
     to_char(
 	    date_trunc('month', i.creation_date ),
 	    'YYYY-MM'
-	) AS AnoMes,
+	) AS Annee_Mois,
     COUNT(i.id) AS Total
 FROM folio_inventory.item__ i
 LEFT JOIN folio_users.users__ u
@@ -24,9 +24,9 @@ LEFT JOIN folio_users.users__ u
 where (i.jsonb->'metadata'->>'createdDate')::date between start_date and end_date
 and i.__current and u.__current 
 GROUP BY
-    AnoMes,
-    Usuario
-ORDER BY AnoMes DESC, Usuario
+    Annee_Mois,
+    Utilizateur
+ORDER BY Annee_Mois DESC, Utilizateur
 $$
 LANGUAGE SQL
 STABLE

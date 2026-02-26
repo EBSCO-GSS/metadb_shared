@@ -1,18 +1,18 @@
---metadb:function producao_novos_bibliograficos
+--metadb:function production_nouveaux_bibliographiques
 
-DROP FUNCTION IF EXISTS producao_novos_bibliograficos;
+DROP FUNCTION IF EXISTS production_nouveaux_bibliographiques;
 
-CREATE FUNCTION producao_novos_bibliograficos(
+CREATE FUNCTION production_nouveaux_bibliographiques(
     start_date date DEFAULT '2020-01-01',
     end_date date DEFAULT '2050-01-01'
 )
 RETURNS TABLE(
-    Usuario text,
-    Ano_Mes text,
+    Utilisateur text,
+    Annee_Mois text,
     Total text)
 AS $$
 select 
-    (u.jsonb->'personal'->>'firstName' || ' ' || (u.jsonb->'personal'->>'lastName')) AS Usuario,
+    (u.jsonb->'personal'->>'firstName' || ' ' || (u.jsonb->'personal'->>'lastName')) AS Utilisateur,
     to_char(
 	    date_trunc('month', (i.jsonb->'metadata'->>'createdDate')::date),
 	    'YYYY-MM'
@@ -25,9 +25,9 @@ where (i.jsonb->'metadata'->>'createdDate')::date between start_date and end_dat
 and i.__current 
 and u.__current 
 GROUP BY
-    Ano_Mes,
-    Usuario
-ORDER BY Ano_Mes DESC, Usuario
+    Annee_Mois,
+    Utilisateur
+ORDER BY Annee_Mois DESC, Utilisateur
 $$
 LANGUAGE SQL
 STABLE

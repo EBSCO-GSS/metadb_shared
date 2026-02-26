@@ -1,17 +1,18 @@
 {
-    "displayName": "Produção - Novos exemplares",
-    "description": "Mostra os totais de novos exemplares criados por operador",
-    "instructions": "Introduzir as datas de início e fim ",
+    "displayName": "Production - Nouveaux exemplaires",
+    "description": "Affiche le nombre total de nouveaux exemplaires créés par opérateur.",
+    "instructions": "Entrez les dates de début et de fin",
     "parameters": [
         {
             "name": "start_date",
-            "displayName": "Data Início",
+            "displayName": "Date de début",
             "type": "date",
             "required": true
         },
+        
         {
             "name": "end_date",
-            "displayName": "Data fim",
+            "displayName": "Date de fin",
             "type": "date",
             "required": true
         }

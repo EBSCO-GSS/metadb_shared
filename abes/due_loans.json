@@ -2,7 +2,7 @@
     
     "displayName" : "Liste des prêts en retard",
     "description" : "Affiche les prêts en retard",
-    "instructions" : "Entrez les dates de début et de fin du remboursement prévu",
+    "instructions" : "Entrez les dates de début et de fin du retour prévu",
     "parameters": [
         {
             "name": "start_date",

@@ -1,19 +1,21 @@
 {
-    "displayName": "Produção - Novos registos bibliográficos",
-    "description": "Mostra os totais de novos registros bibliograficos criados por operador",
-    "instructions": "Introduzir as datas de início e fim ",
+    "displayName": "Production - Nouveaux enregistrements bibliographiques",
+    "description": "Affiche le nombre total de nouvelles notices bibliographiques créées par opérateur.",
+    "instructions": "Entrez les dates de début et de fin ",
     "parameters": [
         {
             "name": "start_date",
-            "displayName": "Data Início",
+            "displayName": "Date de début",
             "type": "date",
             "required": true
         },
+        
         {
             "name": "end_date",
-            "displayName": "Data fim",
+            "displayName": "Date de fin",
             "type": "date",
             "required": true
         }
+    
     ]
 }
