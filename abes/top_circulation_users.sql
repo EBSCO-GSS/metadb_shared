@@ -1,4 +1,4 @@
---metadb:function top_usuarios_circulacao
+--metadb:function top_circulation_users
 
 DROP FUNCTION IF EXISTS top_circulation_users;
 
