@@ -1,0 +1,21 @@
+{
+    "displayName": "Top utilisateurs de circulation",
+    "description": "Affiche les totaux de circulation par utilisateur",
+    
+    "instructions": "Entrer les dates de début et de fin",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Date de début",
+            "type": "date",
+            "required": true
+        },
+        
+{
+            "name": "end_date",
+            "displayName": "Date de fin",
+            "type": "date",
+            "required": true
+        }
+    ]
+}
