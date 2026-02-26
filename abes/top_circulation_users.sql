@@ -7,18 +7,18 @@ CREATE FUNCTION top_circulation_users(
     end_date date DEFAULT '2050-01-01'
 )
 RETURNS TABLE(
-    Utilizateur text,
+    Utilisateur text,
     Total text)
 AS $$
 SELECT 
-    (u.jsonb->'personal'->>'firstName' || ' ' || (u.jsonb->'personal'->>'lastName')) AS Utilizateur,
+    (u.jsonb->'personal'->>'firstName' || ' ' || (u.jsonb->'personal'->>'lastName')) AS Utilisateur,
     COUNT(l.id) AS Total
 FROM folio_circulation.loan__ l
 LEFT JOIN folio_users.users__ u
        ON u.id = (l.jsonb->>'userId')::uuid
 WHERE (l.jsonb->>'loanDate')::date  BETWEEN start_date and end_date
-GROUP BY Utilizateur
-ORDER BY Total DESC, Utilizateur;
+GROUP BY Utilisateur
+ORDER BY Total DESC, Utilisateur;
 
 
 $$
