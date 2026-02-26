@@ -16,7 +16,7 @@ select
     to_char(
 	    date_trunc('month', (i.jsonb->'metadata'->>'createdDate')::date),
 	    'YYYY-MM'
-	) AS Ano_Mes,
+	) AS Annee_Mois,
     COUNT(*) AS Total
 FROM folio_inventory.instance__ i
 LEFT JOIN folio_users.users__ u
