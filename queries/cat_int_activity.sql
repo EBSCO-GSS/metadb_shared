@@ -4,7 +4,7 @@ drop function if exists cat_int_activity;
 
 create function cat_int_activity(
 start_date date default '2010-01-01',
-end_date date default NULL
+end_date date default '2050-12-31'
 )
 returns table (
 user_name text,
