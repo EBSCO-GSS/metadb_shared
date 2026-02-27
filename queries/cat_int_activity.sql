@@ -1,4 +1,4 @@
---metadb: function cat_int_activity 
+--metadb:function cat_int_activity 
 
 drop function if exists cat_int_activity;
 
