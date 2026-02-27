@@ -42,8 +42,8 @@ combo as (
 )
 select 
 	coalesce(jsonb_extract_path_text(u."jsonb",'personal','lastName')|| ', '|| jsonb_extract_path_text(u."jsonb",'personal','firstName'),'Unknown') as user_name,
-	c.int_rec_created,
-	c.int_rec_updated 
+	c.int_rec_created as int_rec_created,
+	c.int_rec_updated as int_rec_updated
 from combo as c
 	left join folio_users.users as u on c.operator_id = u.id::text
 order by user_name
