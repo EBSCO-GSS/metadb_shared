@@ -1,0 +1,19 @@
+{
+    "displayName": "Cataloging activity: instances",
+    "description": "Number of instances updated and created by user during a specified timeframe",
+    "instructions": "Enter a start and end date, both inclusive",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Start date",
+            "type": "date",
+            "required": false
+        },
+        {
+            "name": "end_date",
+            "displayName": "End date",
+            "type": "date",
+            "required": false
+        }
+    ]
+}
