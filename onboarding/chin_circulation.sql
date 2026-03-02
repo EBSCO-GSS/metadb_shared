@@ -6,16 +6,16 @@ CREATE FUNCTION chin_circulation(
  
 )
 RETURNS TABLE(
-    year number,
-    count_loan number,
-    count_return number)
+    _year integer,
+    count_loan integer,
+    count_return integer)
 AS $$
 
 
-SELECT EXTRACT(YEAR FROM loan_date) as year, count(loan_date) count_loan, count(return_date) count_return 
+SELECT EXTRACT(YEAR FROM loan_date) _year, count(loan_date) count_loan, count(return_date) count_return 
 FROM folio_circulation.loan__t__
-GROUP BY year
-order by year desc;
+GROUP BY _year
+order by _year desc;
 
 $$
 LANGUAGE SQL
