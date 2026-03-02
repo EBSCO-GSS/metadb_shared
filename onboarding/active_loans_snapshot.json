@@ -1,0 +1,22 @@
+{
+    
+    "displayName" : "List of loans in a Snapshot",
+    "description" : "List of active loans in a period of time",
+    "instructions" : "enter the dates and run the report",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Start date",
+            "type": "date",
+            "required": true
+        },
+        
+{
+            "name": "end_date",
+            "displayName": "End Date",
+            "type": "date",
+            "required": true
+        }
+    
+    ]
+}
