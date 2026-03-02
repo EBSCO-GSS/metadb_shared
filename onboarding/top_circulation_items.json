@@ -1,0 +1,21 @@
+{
+    "displayName": "Top circulation items",
+    "description": "Report showing top 10 circulation items",
+    
+    "instructions": "Introduzca las fechas",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Fecha de inicio",
+            "type": "date",
+            "required": true
+        },
+        
+{
+            "name": "end_date",
+            "displayName": "Fecha de fin",
+            "type": "date",
+            "required": true
+        }
+    ]
+}
