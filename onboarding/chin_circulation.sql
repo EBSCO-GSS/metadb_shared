@@ -1,8 +1,8 @@
---metadb:function chin-circulation
+--metadb:function chin_circulation
 
-DROP FUNCTION IF EXISTS chin-circulation;
+DROP FUNCTION IF EXISTS chin_circulation;
 
-CREATE FUNCTION chin-circulation(
+CREATE FUNCTION chin_circulation(
  
 )
 RETURNS TABLE(
