@@ -8,10 +8,14 @@
       "displayName": "Tipo de Material",
       "type": "multiselect",
       "required": false,
-      "selectFromTable": {
-        "tableName": "folio_inventory.material_type__t__",
-        "valueColumn": "id",
-        "labelColumn": "name"
+      "controlled": {
+        "fetchOptions": {
+          "wsapiPath": "material-types",
+          "resultPath": "mtypes",
+          "queryField": "id",
+          "displaySpec": "{{name}}",
+          "limit": 1000
+        }
       }
     }
   ]
