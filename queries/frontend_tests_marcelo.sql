@@ -1,4 +1,7 @@
 --metadb:function frontend_tests_marcelo
+--metadb:column material_types_value label="Valor informado pelo usuário"
+--metadb:column item_id label="Id do tipo do material"
+--metadb:column material_type_name label="Descrição do material"
 
 drop function if exists frontend_tests_marcelo;
 

@@ -7,7 +7,7 @@
       "name": "material_types",
       "displayName": "Tipo de Material",
       "type": "text",
-      "required": false
+      "required": true
     }
   ]
 }
