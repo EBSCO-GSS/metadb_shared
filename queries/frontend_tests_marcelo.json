@@ -1,24 +1,21 @@
 {
-  "displayName": "Teste de Frontend: Seleção de Múltiplos Tipos de Material",
+  "displayName": "Teste de Fronted: Seleção de Múltiplos Tipos de Material",
   "description": "Lista itens filtrados por um ou mais tipos de material.",
-  "instructions": "Selecione...",
+  "instructions": "Pesquise...",
   "parameters": [
     {
       "name": "material_types",
       "displayName": "Tipo de Material",
-      "type": "select",
+      "type": "text",
       "required": true,
-      "multiselection": true,
-      "controlled.fetchOptions": {
-        "wsapiPath": "material-types",
-        "query": "cql.allRecords=1",
-        "sortSpec": "name",
-        "limit": 1000,
-        "resultPath": "mtypes",
-        "queryField": "id",
-        "displaySpec": "{{name}}",
-        "multiselection": true
-      }
+      "controlled.options": [
+        "book",
+        "dvd",
+        "journal",
+        "microform",
+        "sound recording"
+      ],
+      "controlled.allowOtherValues": true
     }
   ]
 }
