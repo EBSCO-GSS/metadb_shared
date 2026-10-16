@@ -1,22 +1,13 @@
 {
   "displayName": "Teste de Fronted: Seleção de Múltiplos Tipos de Material",
   "description": "Lista itens filtrados por um ou mais tipos de material.",
-  "instructions": "Selecione um ou mais itens",
+  "instructions": "Enter a Text",
   "parameters": [
     {
       "name": "material_types",
       "displayName": "Tipo de Material",
-      "type": "multiselect",
-      "required": false,
-      "controlled": {
-        "fetchOptions": {
-          "wsapiPath": "material-types",
-          "resultPath": "mtypes",
-          "queryField": "id",
-          "displaySpec": "{{name}}",
-          "limit": 1000
-        }
-      }
+      "type": "text",
+      "required": false
     }
   ]
 }
