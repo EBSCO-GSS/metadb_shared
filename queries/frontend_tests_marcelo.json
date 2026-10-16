@@ -1,0 +1,18 @@
+{
+  "displayName": "Teste de Fronted: Seleção de Múltiplos Tipos de Material",
+  "description": "Lista itens filtrados por um ou mais tipos de material.",
+  "instructions": "Selecione um ou mais itens",
+  "parameters": [
+    {
+      "name": "material_types",
+      "displayName": "Tipo de Material",
+      "type": "multiselect",
+      "required": false,
+      "selectFromTable": {
+        "tableName": "folio_inventory.material_type__t__",
+        "valueColumn": "id",
+        "labelColumn": "name"
+      }
+    }
+  ]
+}
