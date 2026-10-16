@@ -6,8 +6,9 @@
     {
       "name": "material_types",
       "displayName": "Tipo de Material",
-      "type": "multiselection",
+      "type": "select",
       "required": true,
+      "multiselection": true,
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
         "query": "cql.allRecords=1",
@@ -15,7 +16,8 @@
         "limit": 1000,
         "resultPath": "mtypes",
         "queryField": "id",
-        "displaySpec": "{{name}}"
+        "displaySpec": "{{name}}",
+        "multiselection": true
       }
     }
   ]
