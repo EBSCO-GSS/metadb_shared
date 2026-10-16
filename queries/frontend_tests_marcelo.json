@@ -1,7 +1,7 @@
 {
-  "displayName": "Teste de Fronted: Seleção de Múltiplos Tipos de Material",
-  "description": "Lista itens filtrados por um ou mais tipos de material.",
-  "instructions": "Pesquise...",
+  "displayName": "Teste de Fronted",
+  "description": "Lista de itens filtrado por um ou mais tipo de material.",
+  "instructions": "Selecione um tipo de material e para mais de um tipo separe-os utlizando vírgula. Ex. ",
   "parameters": [
     {
       "name": "material_types",
@@ -9,11 +9,22 @@
       "type": "text",
       "required": true,
       "controlled.options": [
-        "book",
-        "dvd",
-        "journal",
-        "microform",
-        "sound recording"
+        "Book",
+        "Cartographic Material",
+        "Electronic resource",
+        "Equipment",
+        "Graphic novel",
+        "Key",
+        "Laptop",
+        "Microform",
+        "Musical score",
+        "On order",
+        "Printed music",
+        "Serial",
+        "Sound recording",
+        "Sound recording - Foreign Language",
+        "Two-dimensional graphic",
+        "Video recording"
       ],
       "controlled.allowOtherValues": true
     }
