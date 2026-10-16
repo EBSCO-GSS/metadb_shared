@@ -8,7 +8,9 @@
       "displayName": "Tipo de Material",
       "type": "text",
       "required": true,
-      "default": "Marcelo teste"
+      "controlled": {
+        "options": ["book", "dvd", "journal", "microform", "sound recording"]
+      }
     }
   ]
 }
