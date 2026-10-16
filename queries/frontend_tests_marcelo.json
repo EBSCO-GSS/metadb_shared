@@ -8,6 +8,7 @@
       "displayName": "Tipo de Material",
       "type": "text",
       "required": true,
+      "multi": true,
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
         "query": "cql.allRecords=1",
