@@ -29,6 +29,27 @@ from
     folio_inventory.material_type__t__ AS mt
 WHERE
 	mt.__current = true    
+	AND
+	(
+		( 
+		CASE 
+			WHEN material_type_1 <> 'todos' THEN mt.id = trim(material_type_1)::uuid
+			ELSE mt.__current = true 
+		END
+		)
+	OR ( 
+		CASE 
+			WHEN material_type_2 <> 'todos' THEN mt.id = trim(material_type_2)::uuid
+			ELSE mt.__current = true 
+		END
+		)
+	OR ( 
+		CASE 
+			WHEN material_type_3 <> 'todos' THEN mt.id = trim(material_type_3)::uuid
+			ELSE mt.__current = true 
+		END
+		)
+	)
 order by
 	mt.name
 $$
