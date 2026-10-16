@@ -6,9 +6,9 @@
 drop function if exists frontend_tests_marcelo;
 
 create function frontend_tests_marcelo(
-material_type_1 text,
-material_type_2 text,
-material_type_3 text
+material_type_1 text default 'todos',
+material_type_2 text default 'todos',
+material_type_3 text default 'todos'
 )
 returns table (
 material_type_1_value text,
