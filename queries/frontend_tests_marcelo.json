@@ -7,6 +7,7 @@
       "name": "material_type_1",
       "displayName": "Tipo de material 1:",
       "type": "text",
+      "default": "Todos",
       "required": false,
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
@@ -22,6 +23,7 @@
       "name": "material_type_2",
       "displayName": "And (Tipo de material 2):",
       "type": "text",
+      "default": "Todos",
       "required": false,
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
@@ -37,6 +39,7 @@
       "name": "material_type_3",
       "displayName": "And (Tipo de material 3):",
       "type": "text",
+      "default": "Todos",
       "required": false,
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
