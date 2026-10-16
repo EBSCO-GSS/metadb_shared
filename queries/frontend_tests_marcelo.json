@@ -5,7 +5,7 @@
   "parameters": [
     {
       "name": "material_type_1",
-      "displayName": "Tipo de Material 1:",
+      "displayName": "Tipo de material 1:",
       "type": "text",
       "required": false,
       "controlled.fetchOptions": {
@@ -20,7 +20,7 @@
     },
     {
       "name": "material_type_2",
-      "displayName": "AND Tipo de Material 2:",
+      "displayName": "And (Tipo de material 2):",
       "type": "text",
       "required": false,
       "controlled.fetchOptions": {
@@ -35,7 +35,7 @@
     },
     {
       "name": "material_type_3",
-      "displayName": "AND Tipo de Material 3:",
+      "displayName": "And (Tipo de material 3):",
       "type": "text",
       "required": false,
       "controlled.fetchOptions": {
