@@ -8,9 +8,13 @@
       "displayName": "Tipo de Material",
       "type": "text",
       "required": true,
-      "controlled": {
-        "options": ["book", "dvd", "journal", "microform", "sound recording"]
-      }
+      "controlled.options": [
+        "book",
+        "dvd",
+        "journal",
+        "microform",
+        "sound recording"
+      ]
     }
   ]
 }
