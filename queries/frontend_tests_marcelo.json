@@ -1,32 +1,52 @@
 {
   "displayName": "Teste de Fronted",
-  "description": "Lista de itens filtrado por um ou mais tipo de material.",
-  "instructions": "Selecione um tipo de material e para mais de um tipo separe-os utlizando vírgula. Ex. ",
+  "description": "Itens filtrados por um ou mais tipos de material.",
+  "instructions": "Selecione um ou mais filtros para o tipo de material se desejar.",
   "parameters": [
     {
-      "name": "material_types",
-      "displayName": "Tipo de Material",
+      "name": "material_type_1",
+      "displayName": "Tipo de Material 1:",
       "type": "text",
-      "required": true,
-      "controlled.options": [
-        "Book",
-        "Cartographic Material",
-        "Electronic resource",
-        "Equipment",
-        "Graphic novel",
-        "Key",
-        "Laptop",
-        "Microform",
-        "Musical score",
-        "On order",
-        "Printed music",
-        "Serial",
-        "Sound recording",
-        "Sound recording - Foreign Language",
-        "Two-dimensional graphic",
-        "Video recording"
-      ],
-      "controlled.allowOtherValues": true
+      "required": false,
+      "controlled.fetchOptions": {
+        "wsapiPath": "material-types",
+        "query": "cql.allRecords=1",
+        "sortSpec": "name",
+        "limit": 1000,
+        "resultPath": "mtypes",
+        "queryField": "id",
+        "displaySpec": "{{name}}"
+      }
+    },
+    {
+      "name": "material_type_2",
+      "displayName": "AND Tipo de Material 2:",
+      "type": "text",
+      "required": false,
+      "controlled.fetchOptions": {
+        "wsapiPath": "material-types",
+        "query": "cql.allRecords=1",
+        "sortSpec": "name",
+        "limit": 1000,
+        "resultPath": "mtypes",
+        "queryField": "id",
+        "displaySpec": "{{name}}"
+      }
+    },
+    {
+      "name": "material_type_3",
+      "displayName": "AND Tipo de Material 3:",
+      "type": "text",
+      "required": false,
+      "controlled.fetchOptions": {
+        "wsapiPath": "material-types",
+        "query": "cql.allRecords=1",
+        "sortSpec": "name",
+        "limit": 1000,
+        "resultPath": "mtypes",
+        "queryField": "id",
+        "displaySpec": "{{name}}"
+      }
     }
   ]
 }
