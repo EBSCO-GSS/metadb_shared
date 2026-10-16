@@ -8,6 +8,7 @@
       "displayName": "Tipo de Material",
       "type": "text",
       "required": true,
+      "multiple": true,
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
         "query": "cql.allRecords=1",
@@ -16,7 +17,7 @@
         "resultPath": "mtypes",
         "queryField": "id",
         "displaySpec": "{{name}}",
-        "multi": true
+        "multiple": true
       }
     }
   ]
