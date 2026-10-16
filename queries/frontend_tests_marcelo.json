@@ -8,13 +8,15 @@
       "displayName": "Tipo de Material",
       "type": "text",
       "required": true,
-      "controlled.options": [
-        "book",
-        "dvd",
-        "journal",
-        "microform",
-        "sound recording"
-      ]
+      "controlled.fetchOptions": {
+        "wsapiPath": "material-types",
+        "query": "",
+        "sortSpec": "name",
+        "limit": 1000,
+        "resultPath": "mtypes",
+        "queryField": "id",
+        "displaySpec": "{{name}}"
+      }
     }
   ]
 }
