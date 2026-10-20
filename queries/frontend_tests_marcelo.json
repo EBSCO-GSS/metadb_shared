@@ -16,7 +16,10 @@
         "limit": 1000,
         "resultPath": "mtypes",
         "queryField": "id",
-        "displaySpec": "{{name}}"
+        "displaySpec": "{{name}}",
+        "dataOptions": {
+          "multiple": true
+        }
       }
     },
     {
