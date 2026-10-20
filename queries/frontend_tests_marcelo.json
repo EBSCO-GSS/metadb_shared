@@ -1,7 +1,7 @@
 {
   "displayName": "Testes de Fronted",
   "description": "Testes de Filtros, um ou mais tipos de material.",
-  "instructions": "Se desejar, selecione um Tipo de Material no (campo de seleção) OU digite no (campo texto) a descrição dos Materiais separados por vírgula.",
+  "instructions": "Se desejar, selecione um Tipo de Material no (campo de seleção) Ou digite no (campo texto) a descrição dos Materiais separados por vírgula.",
   "parameters": [
     {
       "name": "material_type_1",
@@ -21,7 +21,7 @@
     },
     {
       "name": "material_type_2",
-      "displayName": "Tipo de material - campo texto (Book, Electronic resource, On order):",
+      "displayName": "Tipo de material - campo texto (Ex.: Book,Electronic resource,On order):",
       "required": false,
       "type": "text",
       "default": "",
