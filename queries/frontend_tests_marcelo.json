@@ -42,7 +42,8 @@
         "Sound recording - Foreign Language",
         "Two-dimensional graphic",
         "Video recording"
-      ]
+      ],
+      "controlled.allowOtherValues": true
     }
   ]
 }
