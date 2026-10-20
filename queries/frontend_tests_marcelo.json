@@ -1,15 +1,14 @@
 {
-  "displayName": "Teste de Fronted",
-  "description": "Itens filtrados por um ou mais tipos de material.",
-  "instructions": "Selecione um ou mais filtros para o tipo de material se desejar.",
+  "displayName": "Testes de Fronted",
+  "description": "Testes de Filtros um ou mais tipos de material.",
+  "instructions": "Se desejar, selecione um Tipo de Material no (campo de seleção) ou digite no (campo texto) a descrição dos Materiais separados por vírgula.",
   "parameters": [
     {
       "name": "material_type_1",
-      "displayName": "Tipo de material 1:",
-      "type": "text",
-      "default": "todos",
+      "displayName": "Tipo de material (campo de seleção):",
       "required": false,
-      "multiple": true,
+      "type": "text",
+      "default": "",
       "controlled.fetchOptions": {
         "wsapiPath": "material-types",
         "query": "cql.allRecords=1",
@@ -17,42 +16,33 @@
         "limit": 1000,
         "resultPath": "mtypes",
         "queryField": "id",
-        "displaySpec": "{{name}}",
-        "multiple": true,
-        "disabled": true
+        "displaySpec": "{{name}}"
       }
     },
     {
       "name": "material_type_2",
-      "displayName": "And (Tipo de material 2):",
-      "type": "text",
-      "default": "todos",
+      "displayName": "Tipo de material (campo texto):",
       "required": false,
-      "controlled.fetchOptions": {
-        "wsapiPath": "material-types",
-        "query": "cql.allRecords=1",
-        "sortSpec": "name",
-        "limit": 1000,
-        "resultPath": "mtypes",
-        "queryField": "id",
-        "displaySpec": "{{name}}"
-      }
-    },
-    {
-      "name": "material_type_3",
-      "displayName": "And (Tipo de material 3):",
       "type": "text",
-      "default": "todos",
-      "required": false,
-      "controlled.fetchOptions": {
-        "wsapiPath": "material-types",
-        "query": "cql.allRecords=1",
-        "sortSpec": "name",
-        "limit": 1000,
-        "resultPath": "mtypes",
-        "queryField": "id",
-        "displaySpec": "{{name}}"
-      }
+      "default": "",
+      "controlled.options": [
+        "Book",
+        "Cartographic Material",
+        "Electronic resource",
+        "Equipment",
+        "Graphic novel",
+        "Key",
+        "Laptop",
+        "Microform",
+        "Musical score",
+        "On order",
+        "Printed music",
+        "Serial",
+        "Sound recording",
+        "Sound recording - Foreign Language",
+        "Two-dimensional graphic",
+        "Video recording"
+      ]
     }
   ]
 }
