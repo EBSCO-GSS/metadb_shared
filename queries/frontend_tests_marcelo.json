@@ -5,7 +5,7 @@
   "parameters": [
     {
       "name": "material_type_1",
-      "displayName": "Tipo de material (campo de seleção):",
+      "displayName": "Tipo de material - campo de seleção:",
       "required": false,
       "type": "text",
       "default": "",
@@ -21,7 +21,7 @@
     },
     {
       "name": "material_type_2",
-      "displayName": "Tipo de material (campo texto):",
+      "displayName": "Tipo de material - campo texto (Book, Electronic resource, On order):",
       "required": false,
       "type": "text",
       "default": "",
