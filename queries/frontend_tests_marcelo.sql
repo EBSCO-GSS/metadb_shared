@@ -4,8 +4,8 @@
 --metadb:column item_id label="Id do tipo do material"
 --metadb:column material_type_name label="Descrição do material"
 
+CREATE EXTENSION IF NOT EXISTS unaccent;
 drop function if exists frontend_tests_marcelo;
-
 create function frontend_tests_marcelo(
 material_type_1 text default '',
 material_type_2 text default ''
@@ -50,10 +50,10 @@ WHERE
 	mt.__current = true    
 	AND (
             -- Verifica se o nome bate com o parâmetro 1
-            LOWER(trim(mt.name)) = LOWER(trim(material_type_1))
+            unaccent(LOWER(trim(mt.name))) = unaccent(LOWER(trim(material_type_1)))
             OR 
 			-- Quebra a string removendo qualquer espaço antes ou depois da vírgula
-            LOWER(trim(mt.name)) = ANY(regexp_split_to_array(LOWER(trim(material_type_2)), '\s*,\s*'))			
+            unaccent(LOWER(trim(mt.name))) = ANY(regexp_split_to_array(unaccent(LOWER(trim(material_type_2))), '\s*,\s*'))			
     )	
 order by
 	mt.name;
