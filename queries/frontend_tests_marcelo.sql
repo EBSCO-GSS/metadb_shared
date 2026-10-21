@@ -4,7 +4,7 @@
 --metadb:column item_id label="Id do tipo do material"
 --metadb:column material_type_name label="Descrição do material"
 
-CREATE EXTENSION IF NOT EXISTS unaccent;
+--CREATE EXTENSION IF NOT EXISTS unaccent;
 drop function if exists frontend_tests_marcelo;
 create function frontend_tests_marcelo(
 material_type_1 text default '',
