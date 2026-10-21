@@ -50,13 +50,13 @@ WHERE
 	mt.__current = true    
 	AND (
             -- Verifica se o nome bate com o parâmetro 1
-            translate(LOWER(trim(mt.name)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
- = translate(LOWER(trim(material_type_1)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
+            regexp_replace(translate(LOWER(trim(mt.name)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), '\s+', ' ', 'g')
+ = regexp_replace(translate(LOWER(trim(material_type_1)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), '\s+', ' ', 'g')
 
             OR 
 			-- Quebra a string removendo qualquer espaço antes ou depois da vírgula
-            translate(LOWER(trim(mt.name)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
- = ANY(regexp_split_to_array(translate(LOWER(trim(material_type_2)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
+            regexp_replace(translate(LOWER(trim(mt.name)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), '\s+', ' ', 'g')
+ = ANY(regexp_split_to_array(regexp_replace(translate(LOWER(trim(material_type_2)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), '\s+', ' ', 'g')
 , '\s*,\s*'))			
     )	
 order by
