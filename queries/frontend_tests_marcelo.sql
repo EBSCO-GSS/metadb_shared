@@ -50,10 +50,10 @@ WHERE
 	mt.__current = true    
 	AND (
             -- Verifica se o nome bate com o parâmetro 1
-            trim(mt.name) = trim(material_type_1)
+            LOWER(trim(mt.name)) = LOWER(trim(material_type_1))
             OR 
 			-- Quebra a string removendo qualquer espaço antes ou depois da vírgula
-            trim(mt.name) = ANY(regexp_split_to_array(trim(material_type_2), '\s*,\s*'))			
+            LOWER(trim(mt.name)) = ANY(regexp_split_to_array(LOWER(trim(material_type_2)), '\s*,\s*'))			
     )	
 order by
 	mt.name;
