@@ -50,10 +50,14 @@ WHERE
 	mt.__current = true    
 	AND (
             -- Verifica se o nome bate com o parâmetro 1
-            unaccent(LOWER(trim(mt.name))) = unaccent(LOWER(trim(material_type_1)))
+            translate(LOWER(trim(mt.name)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
+ = translate(LOWER(trim(material_type_1)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
+
             OR 
 			-- Quebra a string removendo qualquer espaço antes ou depois da vírgula
-            unaccent(LOWER(trim(mt.name))) = ANY(regexp_split_to_array(unaccent(LOWER(trim(material_type_2))), '\s*,\s*'))			
+            translate(LOWER(trim(mt.name)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
+ = ANY(regexp_split_to_array(translate(LOWER(trim(material_type_2)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou')
+, '\s*,\s*'))			
     )	
 order by
 	mt.name;
