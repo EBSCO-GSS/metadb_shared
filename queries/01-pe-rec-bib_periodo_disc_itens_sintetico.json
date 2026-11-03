@@ -115,6 +115,66 @@
         "uncat"
       ],
       "controlled.allowOtherValues": true
+    },
+    {
+      "name": "p_items_status_1",
+      "displayName": "Situação do exemplar - campo de seleção:",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.options": [
+        "Aged to lost",
+        "Available",
+        "Awaiting delivery",
+        "Awaiting pickup",
+        "Checked out",
+        "Claimed returned",
+        "Declared lost",
+        "In process",
+        "In process (non-requestable)",
+        "Intellectual item",
+        "In transit",
+        "Lost and paid",
+        "Missing",
+        "On order",
+        "Order closed",
+        "Paged",
+        "Restricted",
+        "Unavailable",
+        "Unknown",
+        "Withdrawn"
+      ],
+      "controlled.allowOtherValues": false
+    },
+    {
+      "name": "p_items_status_2",
+      "displayName": "Situação do exemplar - campo texto (Ex.: Available,Checked out,Intellectual item):",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.options": [
+        "Aged to lost",
+        "Available",
+        "Awaiting delivery",
+        "Awaiting pickup",
+        "Checked out",
+        "Claimed returned",
+        "Declared lost",
+        "In process",
+        "In process (non-requestable)",
+        "Intellectual item",
+        "In transit",
+        "Lost and paid",
+        "Missing",
+        "On order",
+        "Order closed",
+        "Paged",
+        "Restricted",
+        "Unavailable",
+        "Unknown",
+        "Withdrawn"
+      ],
+      "controlled.allowOtherValues": true
     }
   ]
 }
