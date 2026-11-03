@@ -31,7 +31,6 @@ RETURNS TABLE (
     codigo_disciplina text,	
     nome_disciplina text,	
     tipo_bibliografia text,	
-	id_instancia uuid,	
 	hrid_instancia text,
 	status_instancia text,	
 	titulo_da_obra text,
@@ -99,8 +98,8 @@ Filtros:
 	p_items_status_1 - text contendo uma Descrição do Status do Item (Ex. Available, Intellectual item, etc...)	
 	p_items_status_2 - text contendo uma lista de Descrições dos Status do Item separados por virgula , (Ex. Available, Intellectual item, etc...)	
 - Instance Status:
-	p_instance_status_1 - text contedo um Status das Instancias
-	p_instance_status_2 - text contedo uma lista de Status das Instancias separados por vírgula ,
+	p_instance_status_1 - text contendo o Code do Status da Instancia
+	p_instance_status_2 - text contendo uma lista de Codes de Status das Instancias separados por vírgula ,
 - Data inicial de aquisição:
 	p_instances_initial_acquisition_date - text, data do pagamento do novo item na aquisição
 - Data final de aquisição:
@@ -201,9 +200,8 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 			c.course_number::text AS codigo_disciplina,			
             c.name::text AS nome_disciplina,	
 			trim(split_part(loant.name::text, '-', 2)) as tipo_bibliografia,
-			inst.id::uuid AS id_instancia,
 			jsonb_extract_path_text(inst.jsonb,'hrid') AS hrid_instancia,
-            status_inst.name AS status_instancia,			
+            status_inst.code AS status_instancia,			
             jsonb_extract_path_text(inst.jsonb::jsonb,'title')::text AS titulo_da_obra,
     		jsonb_extract_path_text(mt.jsonb,'name') AS tipo_de_material,
 		--	jsonb_extract_path_text(item2.jsonb::jsonb,'id')::uuid AS id_item,
@@ -413,9 +411,9 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 		        (COALESCE(trim(p_instance_status_1), '') = '' AND COALESCE(trim(p_instance_status_2), '') = '')
 		        OR
 		        (
-		            replace(translate(LOWER(status_inst.name), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '') = replace(translate(LOWER(p_instance_status_1), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '')
+		            replace(translate(LOWER(status_inst.code), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '') = replace(translate(LOWER(p_instance_status_1), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '')
 		            OR
-		            replace(translate(LOWER(status_inst.name), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '') = ANY(regexp_split_to_array(replace(translate(LOWER(p_instance_status_2), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', ''), '\s*,\s*'))
+		            replace(translate(LOWER(status_inst.code), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '') = ANY(regexp_split_to_array(replace(translate(LOWER(p_instance_status_2), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', ''), '\s*,\s*'))
 		        )
 		    )
 			AND (
