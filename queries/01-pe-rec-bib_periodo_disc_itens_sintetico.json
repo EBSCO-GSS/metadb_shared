@@ -1,0 +1,82 @@
+{
+  "displayName": "MEC: RELATÓRIO DE PLANO DE ENSINO - RECONHECIMENTO",
+  "description": "Lista acervos em formato de referência, relacionados aos planos de ensino das unidades organizacionais.\n<br>Agrupado por: Unidade de Informação, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético",
+  "instructions": "Se desejar, selecione um ou mais Filtros no (campo de seleção) Ou digite no (campo texto) as descrições dos Filtros separados por vírgula (,).",
+  "parameters": [
+    {
+      "name": "p_library_code_1",
+      "displayName": "Unidade de informação - campo de seleção:",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.fetchOptions": {
+        "wsapiPath": "location-units/libraries",
+        "query": "cql.allRecords=1",
+        "sortSpec": "name",
+        "limit": 2000,
+        "resultPath": "loclibs",
+        "queryField": "code",
+        "displaySpec": "{{name}} ({{code}})"
+      }
+    },
+    {
+      "name": "p_library_code_2",
+      "displayName": "Unidade de informação - campo texto (Ex.: MCALT,CCTBA,CTOLD,MLBUSLIB,MAINLIB,MLMEDLIB,LAWLIB):",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.options": [
+        "MCALT",
+        "CCTBA",
+        "CTOLD",
+        "MLBUSLIB",
+        "MAINLIB",
+        "MLMEDLIB",
+        "LAWLIB"
+      ],
+      "controlled.allowOtherValues": true
+    },
+    {
+      "name": "p_items_material_type_1",
+      "displayName": "Tipo de material - campo de seleção:",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.fetchOptions": {
+        "wsapiPath": "material-types",
+        "query": "cql.allRecords=1",
+        "sortSpec": "name",
+        "limit": 1000,
+        "resultPath": "mtypes",
+        "queryField": "name",
+        "displaySpec": "{{name}}"
+      }
+    },
+    {
+      "name": "p_items_material_type_2",
+      "displayName": "Tipo de material - campo texto (Ex.: Book,Electronic resource,On order):",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.options": [
+        "Book",
+        "Cartographic Material",
+        "Electronic resource",
+        "Equipment",
+        "Graphic novel",
+        "Key",
+        "Laptop",
+        "Microform",
+        "Musical score",
+        "On order",
+        "Printed music",
+        "Serial",
+        "Sound recording",
+        "Sound recording - Foreign Language",
+        "Two-dimensional graphic",
+        "Video recording"
+      ],
+      "controlled.allowOtherValues": true
+    }
+  ]
+}
