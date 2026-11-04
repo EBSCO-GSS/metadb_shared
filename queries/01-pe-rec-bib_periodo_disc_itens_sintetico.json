@@ -176,6 +176,20 @@
         "Withdrawn"
       ],
       "controlled.allowOtherValues": true
+    },
+    {
+      "name": "p_instances_initial_acquisition_date",
+      "displayName": "Data inicial de aquisição:",
+      "required": false,
+      "type": "date",
+      "default": ""
+    },
+    {
+      "name": "p_instances_final_acquisition_date",
+      "displayName": "Data final de aquisição:",
+      "required": false,
+      "type": "date",
+      "default": ""
     }
   ]
 }
