@@ -5,7 +5,7 @@
   "parameters": [
     {
       "name": "p_library_code_1",
-      "displayName": "Unidade de informação - campo de seleção:",
+      "displayName": "> Unidade de informação - campo de seleção:",
       "required": false,
       "type": "text",
       "default": "",
@@ -38,7 +38,7 @@
     },
     {
       "name": "p_items_material_type_1",
-      "displayName": "Tipo de material - campo de seleção:",
+      "displayName": "> Tipo de material - campo de seleção:",
       "required": false,
       "type": "text",
       "default": "",
@@ -80,7 +80,7 @@
     },
     {
       "name": "p_instance_status_1",
-      "displayName": "Situação do acervo - campo de seleção:",
+      "displayName": "> Situação do acervo - campo de seleção:",
       "required": false,
       "type": "text",
       "default": "",
@@ -118,7 +118,7 @@
     },
     {
       "name": "p_items_status_1",
-      "displayName": "Situação do exemplar - campo de seleção:",
+      "displayName": "> Situação do exemplar - campo de seleção:",
       "required": false,
       "type": "text",
       "default": "",
@@ -179,17 +179,33 @@
     },
     {
       "name": "p_instances_initial_acquisition_date",
-      "displayName": "Data inicial de aquisição:",
+      "displayName": "> Data inicial de aquisição:",
       "required": false,
       "type": "date",
       "default": ""
     },
     {
       "name": "p_instances_final_acquisition_date",
-      "displayName": "Data final de aquisição:",
+      "displayName": "> Data final de aquisição:",
       "required": false,
       "type": "date",
       "default": ""
+    },
+    {
+      "name": "p_department_code",
+      "displayName": "> Unidade organizacional:",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.fetchOptions": {
+        "wsapiPath": "coursereserves/departments",
+        "query": "cql.allRecords=1",
+        "sortSpec": "name",
+        "limit": 2000,
+        "resultPath": "departments",
+        "queryField": "id",
+        "displaySpec": "{{description}}"
+      }
     }
   ]
 }

@@ -81,7 +81,7 @@ AS $$
 
 Filtros:
 - Curso:
-	p_department_code - Código texto do Curso
+	p_department_code - Id/UUID interno do FOLIO do Curso selecionado na tela
 - Disciplina:
 	p_course_code - Text com o Código da Disciplina
 - Periodo Letivo Cursos/Disciplinas
@@ -120,7 +120,8 @@ WITH department_temp AS ( --Filtro Curso
     WHERE __current = true
     AND (
           p_department_code IS NULL OR trim(p_department_code) = ''
-          OR replace(translate(LOWER(split_part(description, '-', 1)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '') = replace(translate(LOWER(p_department_code), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '')
+		  OR id = p_department_code::uuid
+         -- OR replace(translate(LOWER(split_part(description, '-', 1)), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '') = replace(translate(LOWER(p_department_code), 'áéíóúâêîôûãõçàèìòùäëïöü', 'aeiouaeiouaocaeeiouaeiou'), ' ', '')
      )
 ),
 total_itens_temp AS ( --Total de Itens/Exemplares por Biblioteca
