@@ -123,6 +123,7 @@
       "type": "text",
       "default": "",
       "controlled.options": [
+        "",
         "Aged to lost",
         "Available",
         "Awaiting delivery",
