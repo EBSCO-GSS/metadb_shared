@@ -206,6 +206,22 @@
         "queryField": "id",
         "displaySpec": "{{description}}"
       }
+    },
+    {
+      "name": "p_course_code",
+      "displayName": "> Disciplina:",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.fetchOptions": {
+        "wsapiPath": "coursereserves/courses",
+        "query": "courseNumber==\"G10*\"",
+        "sortSpec": "name",
+        "limit": 100,
+        "resultPath": "courses",
+        "queryField": "courseNumber",
+        "displaySpec": "{{courseNumber}} - {{name}}"
+      }
     }
   ]
 }
