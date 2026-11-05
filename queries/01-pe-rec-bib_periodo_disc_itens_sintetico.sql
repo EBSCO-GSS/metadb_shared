@@ -18,8 +18,8 @@ CREATE OR REPLACE FUNCTION rel_planoensino_01(
  	p_period text default ''
 )
 RETURNS TABLE (
-    avaliacao_mec text,
-    agrupamento text,
+    TIPO_AVALIACAO text,
+    AGRUPADO_POR text,
     codigo_biblioteca text,	
     nome_biblioteca text,	
 	codigo_curso text,
@@ -188,8 +188,8 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
         COUNT(*) > 1
 )
 			SELECT 
-            'Reconhecimento'::text as avaliacao_mec,
-            'Biblioteca, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético'::text as agrupamento,
+            'Reconhecimento'::text as TIPO_AVALIACAO,
+            'Biblioteca, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético'::text as AGRUPADO_POR,
             lib.code::text AS codigo_biblioteca,			
             lib.name::text AS nome_biblioteca,
 			trim(split_part(dept.description::text, '-', 1)) AS codigo_curso,			
