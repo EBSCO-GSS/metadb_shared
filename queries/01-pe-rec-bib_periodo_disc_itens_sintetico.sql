@@ -211,6 +211,8 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 				WHEN LOWER(trim(jsonb_extract_path_text(item.jsonb, 'status', 'name'))) = 'intellectual item' THEN 'Digital'
 				ELSE 'Físico'
 			END AS tipo_de_acervo_mec,	*/
+
+			
 			CASE 
 				WHEN LOWER(trim(jsonb_extract_path_text(item.jsonb, 'status', 'name'))) = 'intellectual item' THEN total_itens.total
 				ELSE COALESCE(total_itens.total, 0)
@@ -221,10 +223,12 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 				ELSE COALESCE(total_itens.total, 0)
 			END AS total_itens_por_plano_de_ensino,			
 		
+
 			CASE 
 				WHEN LOWER(trim(jsonb_extract_path_text(item.jsonb, 'status', 'name'))) = 'intellectual item' THEN total_emprestimos_todos_itens_bib.total_emprestimos
 				ELSE COALESCE(total_emprestimos_todos_itens_bib.total_emprestimos, 0)
 			END AS total_emprestimos_itens_na_bib,
+			
 			acq.data_de_aquisicao,
 			acq.payment_status,
 			-- acq.title::text AS title_na_aquisicao,
@@ -305,7 +309,7 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 		LEFT JOIN folio_derived.instance_publication p ON inst.id = p.instance_id	
 		LEFT JOIN folio_inventory.instance_status__t__ status_inst ON jsonb_extract_path_text(inst.jsonb::jsonb,'statusId')::uuid=status_inst.id
 		LEFT JOIN data_aquisicao_temp acq ON item.id = acq.item_id		
-		LEFT JOIN folio_inventory.holdings_record__t__ ho2 ON inst.id = ho2.instance_id
+--		LEFT JOIN folio_inventory.holdings_record__t__ ho2 ON inst.id = ho2.instance_id
 		--LEFT JOIN folio_inventory.item item2 ON ho2.id = item2.holdingsrecordid
 		LEFT JOIN LATERAL ( --Recupera o ISBN
 		    SELECT item_temp ->> 'value' AS value
@@ -340,17 +344,17 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 		LEFT JOIN LATERAL ( --Recupera o total de itens existentes da mesma Biblioteca vinculada ao Plano de Ensino
 		    SELECT total
 		    FROM total_itens_temp AS total_itens
-		    WHERE total_itens.holdingsrecordid = ho2.id
+		    WHERE total_itens.holdingsrecordid = ho.id
 			AND total_itens.effectivelocationid = cl.location_id
-			AND ho2.effective_location_id = total_itens.effectivelocationid
+			AND ho.effective_location_id = total_itens.effectivelocationid
 			AND total_itens.materialtypeid = item.materialtypeid
 		) AS total_itens ON true
 		LEFT JOIN LATERAL ( --Recupera o total de emprestimos por itens da mesma Biblioteca vinculada ao Plano de Ensino
 		    SELECT holdings_record_id, current_item_effective_location_id, material_type_id, SUM(total_emprestimos_itens_bib_temp) AS total_emprestimos
 		    FROM total_emprestimos_itens_bib_temp AS total_empr_itens_bib
-		    WHERE total_empr_itens_bib.holdings_record_id = ho2.id
+		    WHERE total_empr_itens_bib.holdings_record_id = ho.id
 			AND total_empr_itens_bib.current_item_effective_location_id = cl.location_id
-			AND ho2.effective_location_id = total_empr_itens_bib.current_item_effective_location_id
+			AND ho.effective_location_id = total_empr_itens_bib.current_item_effective_location_id
 			AND total_empr_itens_bib.material_type_id = item.materialtypeid
 			GROUP BY holdings_record_id, current_item_effective_location_id, material_type_id
 		) AS total_emprestimos_todos_itens_bib ON true
@@ -365,7 +369,7 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 			AND mt.__current=true			
 			--AND item2.__current=true
 			AND ho.__current=true
-			AND ho2.__current=true
+--			AND ho2.__current=true
 			AND inst.__current=true
 			AND loant.__current=true
 			and status_inst.__current=true
