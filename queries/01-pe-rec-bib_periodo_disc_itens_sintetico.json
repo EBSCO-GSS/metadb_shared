@@ -1,11 +1,11 @@
 {
-  "displayName": "MEC: RELATÓRIO DE PLANO DE ENSINO - RECONHECIMENTO",
-  "description": "Lista acervos em formato de referência, relacionados aos planos de ensino das unidades organizacionais. Agrupado por: Unidade de Informação, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético.",
-  "instructions": "Se desejar, selecione um ou mais Filtros no (campo de seleção) Ou digite no (campo texto) as descrições dos Filtros separados por vírgula (,).",
+  "displayName": "MEC: PLANO DE ENSINO - RECONHECIMENTO - Agrupado por: Unidade de Informação, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético",
+  "description": "Lista acervos em formato de referência, relacionados aos planos de ensino das unidades organizacionais.",
+  "instructions": "Se desejar, selecione um ou mais Filtros no (campo de seleção) Ou digite no (campo texto) o(s) valor(es) separados por vírgula (,).",
   "parameters": [
     {
       "name": "p_library_code_1",
-      "displayName": "> Unidade de informação - campo de seleção:",
+      "displayName": "> Unidade de informação - campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -21,7 +21,7 @@
     },
     {
       "name": "p_library_code_2",
-      "displayName": "Unidade de informação - campo texto (Ex.: CCTBA,CTOLD,MAINLIB):",
+      "displayName": "Unidade de informação - campo texto (Ex.: CCTBA,CTOLD,MAINLIB)",
       "required": false,
       "type": "text",
       "default": "",
@@ -38,7 +38,7 @@
     },
     {
       "name": "p_items_material_type_1",
-      "displayName": "> Tipo de material - campo de seleção:",
+      "displayName": "> Tipo de material - campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -54,7 +54,7 @@
     },
     {
       "name": "p_items_material_type_2",
-      "displayName": "Tipo de material - campo texto (Ex.: Book,Electronic resource,On order):",
+      "displayName": "Tipo de material - campo texto (Ex.: Book,Electronic resource,On order)",
       "required": false,
       "type": "text",
       "default": "",
@@ -80,7 +80,7 @@
     },
     {
       "name": "p_instance_status_1",
-      "displayName": "> Situação do acervo - campo de seleção:",
+      "displayName": "> Situação do acervo - campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -96,7 +96,7 @@
     },
     {
       "name": "p_instance_status_2",
-      "displayName": "Situação do acervo - campo texto (Ex.: batch,fast,order):",
+      "displayName": "Situação do acervo - campo texto (Ex.: batch,fast,order)",
       "required": false,
       "type": "text",
       "default": "",
@@ -118,7 +118,7 @@
     },
     {
       "name": "p_items_status_1",
-      "displayName": "> Situação do exemplar - campo de seleção:",
+      "displayName": "> Situação do exemplar - campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -149,7 +149,7 @@
     },
     {
       "name": "p_items_status_2",
-      "displayName": "Situação do exemplar - campo texto (Ex.: Available,Checked out,Intellectual item):",
+      "displayName": "Situação do exemplar - campo texto (Ex.: Available,Checked out,Intellectual item)",
       "required": false,
       "type": "text",
       "default": "",
@@ -179,22 +179,22 @@
     },
     {
       "name": "p_instances_initial_acquisition_date",
-      "displayName": "> Data inicial de aquisição:",
+      "displayName": "> Data inicial de aquisição",
       "required": false,
       "type": "date",
       "default": ""
     },
     {
       "name": "p_instances_final_acquisition_date",
-      "displayName": "> Data final de aquisição:",
+      "displayName": "> Data final de aquisição",
       "required": false,
       "type": "date",
       "default": ""
     },
     {
       "name": "p_department_code",
-      "displayName": "> Unidade organizacional:",
-      "required": false,
+      "displayName": "> Unidade organizacional",
+      "required": true,
       "type": "text",
       "default": "",
       "controlled.fetchOptions": {
@@ -209,7 +209,7 @@
     },
     {
       "name": "p_course_code",
-      "displayName": "> Disciplina:",
+      "displayName": "> Disciplina",
       "required": false,
       "type": "text",
       "default": "",
@@ -222,6 +222,57 @@
         "queryField": "courseNumber",
         "displaySpec": "{{courseNumber}} - {{name}}"
       }
+    },
+    {
+      "name": "p_year",
+      "displayName": "> Ano vigente (yyyy)",
+      "required": false,
+      "type": "text",
+      "default": ""
+    },
+    {
+      "name": "p_period",
+      "displayName": "> Período",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "controlled.allowOtherValues": true
+    },
+    {
+      "name": "p_semester",
+      "displayName": "> Semestre",
+      "required": false,
+      "type": "text",
+      "default": "",
+      "controlled.options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "controlled.allowOtherValues": true
     }
   ]
 }
