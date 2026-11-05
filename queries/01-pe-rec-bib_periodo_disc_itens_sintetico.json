@@ -1,11 +1,11 @@
 {
   "displayName": "MEC: PLANO DE ENSINO - RECONHECIMENTO - Agrupado por: Biblioteca, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético",
   "description": "Lista acervos em formato de referência, relacionados aos planos de ensino das unidades organizacionais.",
-  "instructions": "Se desejar, selecione um ou mais Filtros no (campo de seleção) Ou digite no (campo texto) o(s) valor(es) separados por vírgula (,).",
+  "instructions": "Se desejar, selecione um ou mais Filtros no (Campo de seleção) Ou digite no (Campo texto) o(s) valor(es) separados por vírgula (,).",
   "parameters": [
     {
       "name": "p_library_code_1",
-      "displayName": "> Biblioteca - campo de seleção",
+      "displayName": "> BIBLIOTECA - Campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -21,7 +21,7 @@
     },
     {
       "name": "p_library_code_2",
-      "displayName": "Biblioteca - campo texto (Ex.: CCTBA,CTOLD,MAINLIB)",
+      "displayName": "Campo texto (Ex.: CCTBA,CTOLD,MAINLIB)",
       "required": false,
       "type": "text",
       "default": "",
@@ -38,7 +38,7 @@
     },
     {
       "name": "p_items_material_type_1",
-      "displayName": "> Tipo de material - campo de seleção",
+      "displayName": "> TIPO DE MATERIAL - Campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -54,7 +54,7 @@
     },
     {
       "name": "p_items_material_type_2",
-      "displayName": "Tipo de material - campo texto (Ex.: Book,Electronic resource,On order)",
+      "displayName": "Campo texto (Ex.: Book,Electronic resource,On order)",
       "required": false,
       "type": "text",
       "default": "",
@@ -80,7 +80,7 @@
     },
     {
       "name": "p_instance_status_1",
-      "displayName": "> Situação do acervo - campo de seleção",
+      "displayName": "> SITUAÇÃO DO ACERVO - Campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -96,7 +96,7 @@
     },
     {
       "name": "p_instance_status_2",
-      "displayName": "Situação do acervo - campo texto (Ex.: batch,fast,order)",
+      "displayName": "Campo texto (Ex.: batch,fast,order)",
       "required": false,
       "type": "text",
       "default": "",
@@ -118,7 +118,7 @@
     },
     {
       "name": "p_items_status_1",
-      "displayName": "> Situação do exemplar - campo de seleção",
+      "displayName": "> SITUAÇÃO DO EXEMPLAR - Campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -149,7 +149,7 @@
     },
     {
       "name": "p_items_status_2",
-      "displayName": "Situação do exemplar - campo texto (Ex.: Available,Checked out,Intellectual item)",
+      "displayName": "Campo texto (Ex.: Available,Checked out,Intellectual item)",
       "required": false,
       "type": "text",
       "default": "",
@@ -179,21 +179,21 @@
     },
     {
       "name": "p_instances_initial_acquisition_date",
-      "displayName": "> Data inicial de aquisição",
+      "displayName": "> DATA INICIAL DE AQUISIÇÃO",
       "required": false,
       "type": "date",
       "default": ""
     },
     {
       "name": "p_instances_final_acquisition_date",
-      "displayName": "> Data final de aquisição",
+      "displayName": "> DATA FINAL DE AQUISIÇÃO",
       "required": false,
       "type": "date",
       "default": ""
     },
     {
       "name": "p_department_code",
-      "displayName": "> Unidade organizacional",
+      "displayName": "> UNIDADE ORGANIZACIONAL",
       "required": false,
       "type": "text",
       "default": "",
@@ -209,7 +209,7 @@
     },
     {
       "name": "p_course_code",
-      "displayName": "> Disciplina",
+      "displayName": "> DISCIPLINA",
       "required": false,
       "type": "text",
       "default": "",
@@ -225,21 +225,21 @@
     },
     {
       "name": "p_year",
-      "displayName": "> Ano (Ex.: 2026)",
+      "displayName": "> ANO (Ex.: 2026)",
       "required": false,
       "type": "text",
       "default": ""
     },
     {
       "name": "p_semester",
-      "displayName": "> Semestre (Ex.: 1)",
+      "displayName": "> SEMESTRE (Ex.: 1)",
       "required": false,
       "type": "text",
       "default": ""
     },
     {
       "name": "p_period",
-      "displayName": "> Período (Ex.: 1)",
+      "displayName": "> PERÍODO (Ex.: 1)",
       "required": false,
       "type": "text",
       "default": ""
