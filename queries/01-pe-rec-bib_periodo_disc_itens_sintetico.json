@@ -1,7 +1,7 @@
 {
   "displayName": "MEC: Plano de ensino / Reconhecimento -> Agrupado por: Biblioteca, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético",
   "description": "Lista acervos em formato de referência, relacionados aos planos de ensino das unidades organizacionais.",
-  "instructions": "Se desejar, selecione um Filtro no (Campo de seleção) Ou digite no (Campo texto) o(s) valor(es) separados por vírgula (,).",
+  "instructions": "Se desejar, selecione um Filtro no \"Campo de seleção\" e/ou digite no \"Campo texto\" o(s) valor(es) separados por vírgula (,).",
   "parameters": [
     {
       "name": "p_library_code_1",
