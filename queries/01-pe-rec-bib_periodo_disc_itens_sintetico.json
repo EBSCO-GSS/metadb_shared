@@ -194,7 +194,7 @@
     {
       "name": "p_department_code",
       "displayName": "> Unidade organizacional",
-      "required": true,
+      "required": false,
       "type": "text",
       "default": "",
       "controlled.fetchOptions": {
@@ -225,54 +225,24 @@
     },
     {
       "name": "p_year",
-      "displayName": "> Ano (yyyy)",
+      "displayName": "> Ano (Ex.: 2026)",
+      "required": false,
+      "type": "text",
+      "default": ""
+    },
+    {
+      "name": "p_semester",
+      "displayName": "> Semestre (Ex.: 1)",
       "required": false,
       "type": "text",
       "default": ""
     },
     {
       "name": "p_period",
-      "displayName": "> Período",
+      "displayName": "> Período (Ex.: 1)",
       "required": false,
       "type": "text",
-      "default": "",
-      "controlled.options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12"
-      ],
-      "controlled.allowOtherValues": true
-    },
-    {
-      "name": "p_semester",
-      "displayName": "> Semestre",
-      "required": false,
-      "type": "text",
-      "default": "",
-      "controlled.options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12"
-      ],
-      "controlled.allowOtherValues": true
+      "default": ""
     }
   ]
 }

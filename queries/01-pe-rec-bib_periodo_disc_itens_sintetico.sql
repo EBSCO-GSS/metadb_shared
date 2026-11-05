@@ -14,8 +14,8 @@ CREATE OR REPLACE FUNCTION rel_planoensino_01(
     p_department_code text default '',
     p_course_code text default '',
 	p_year text default '',
- 	p_period text default '',	
- 	p_semester text default ''
+ 	p_semester text default '',
+ 	p_period text default ''
 )
 RETURNS TABLE (
     avaliacao_mec text,
@@ -25,8 +25,8 @@ RETURNS TABLE (
 	codigo_curso text,
     nome_curso text,
 	ano integer,
+	semestre integer,	
 	periodo integer,	
-	semestre integer,
 	descricao_periodo text,
     codigo_disciplina text,	
     nome_disciplina text,	
@@ -86,8 +86,8 @@ Filtros:
 	p_course_code - Text com o Código da Disciplina
 - Periodo Letivo Cursos/Disciplinas
 	p_year text default '',
+ 	p_semester text default '',	
  	p_period text default '',	
- 	p_semester text default '',
 - Biblioteca:
 	p_library_code_1 - Text, contendo um Código da Biblioteca - No front end displaySpec: '{{name}} ({{code}})', queryField: code
 	p_library_code_2 - Text, contendo uma lista de Códigos das Biblioteca(s) separados por vírgula (,) - queryField: code
@@ -195,8 +195,8 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 			trim(split_part(dept.description::text, '-', 1)) AS codigo_curso,			
 			dept.description::text AS nome_curso,
 			((regexp_match(ter.name, 'Letivo:\s*(\d{4})', 'i'))[1])::INTEGER AS ano,
+			((regexp_match(ter.name, 'Semestre:\s*(\d+)', 'i'))[1])::INTEGER AS semestre,			
 			((regexp_match(ter.name, 'p[eéêí]ríodo:\s*(\d+)', 'i'))[1])::INTEGER AS periodo,			
-			((regexp_match(ter.name, 'Semestre:\s*(\d+)', 'i'))[1])::INTEGER AS semestre,
 			ter.name::text AS descricao_periodo,
 			c.course_number::text AS codigo_disciplina,			
             c.name::text AS nome_disciplina,	
@@ -380,19 +380,19 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 		        )
 		    )
 		    AND (
+		        (COALESCE(trim(p_semester), '') = '')
+		        OR
+		        (
+					((regexp_match(ter.name, 'Semestre:\s*(\d+)', 'i'))[1])::INTEGER = trim(p_semester)::INTEGER
+		        )
+		    )			
+		    AND (
 		        (COALESCE(trim(p_period), '') = '')
 		        OR
 		        (
 					((regexp_match(ter.name, 'p[eéêí]ríodo:\s*(\d+)', 'i'))[1])::INTEGER = trim(p_period)::INTEGER
 		        )
 		    )			
-		    AND (
-		        (COALESCE(trim(p_semester), '') = '')
-		        OR
-		        (
-					((regexp_match(ter.name, 'Semestre:\s*(\d+)', 'i'))[1])::INTEGER = trim(p_semester)::INTEGER
-		        )
-		    )
 		    --AND COALESCE(jsonb_extract_path_text(item.jsonb, 'discoverySuppress')::boolean, false) = false
 			AND (p_instances_initial_acquisition_date IS NULL OR trim(p_instances_initial_acquisition_date) = '' OR acq.data_de_aquisicao is not null)
 			AND (p_instances_final_acquisition_date IS NULL OR trim(p_instances_final_acquisition_date) = '' OR acq.data_de_aquisicao is not null)
