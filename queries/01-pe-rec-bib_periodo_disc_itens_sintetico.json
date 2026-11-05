@@ -1,11 +1,11 @@
 {
-  "displayName": "MEC: PLANO DE ENSINO - RECONHECIMENTO - Agrupado por: Unidade de Informação, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético",
+  "displayName": "MEC: PLANO DE ENSINO - RECONHECIMENTO - Agrupado por: Biblioteca, Programa de Ensino e Disciplina (Exemplares e Empréstimos) - Sintético",
   "description": "Lista acervos em formato de referência, relacionados aos planos de ensino das unidades organizacionais.",
   "instructions": "Se desejar, selecione um ou mais Filtros no (campo de seleção) Ou digite no (campo texto) o(s) valor(es) separados por vírgula (,).",
   "parameters": [
     {
       "name": "p_library_code_1",
-      "displayName": "> Unidade de informação - campo de seleção",
+      "displayName": "> Biblioteca - campo de seleção",
       "required": false,
       "type": "text",
       "default": "",
@@ -21,7 +21,7 @@
     },
     {
       "name": "p_library_code_2",
-      "displayName": "Unidade de informação - campo texto (Ex.: CCTBA,CTOLD,MAINLIB)",
+      "displayName": "Biblioteca - campo texto (Ex.: CCTBA,CTOLD,MAINLIB)",
       "required": false,
       "type": "text",
       "default": "",
@@ -225,7 +225,7 @@
     },
     {
       "name": "p_year",
-      "displayName": "> Ano vigente (yyyy)",
+      "displayName": "> Ano (yyyy)",
       "required": false,
       "type": "text",
       "default": ""
