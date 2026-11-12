@@ -45,7 +45,7 @@ RETURNS TABLE (
 	payment_status text,
 	--title_na_aquisicao text,
 	referencia_abnt text,
-	URL_PDF_link text,
+	URL_link text,
 	isbn text,
 	issn text,	
 	possui_outras_edicoes text,	
@@ -134,16 +134,16 @@ total_emprestimos_itens_bib_temp AS ( --Total de Empréstimos dos Itens da Bibli
 	SELECT li.current_item_effective_location_id,
 		li.holdings_record_id,
 	    li.item_id,
-		li.material_type_id,
-	    COUNT(li.loan_id) AS total_emprestimos_itens_bib_temp
+--		li.material_type_id,
+	    COUNT(li.loan_id) AS total_emprest_itens_bib_temp
 	FROM  folio_derived.loans_items AS li
 	WHERE li.current_item_effective_location_id is not null
 	AND li.loan_date is not null
 --	AND li.loan_date BETWEEN (COALESCE(NULLIF(trim(p_instances_initial_acquisition_date),''),'2000-01-01')||' 00:00:00')::timestamp AND (COALESCE(NULLIF(trim(p_instances_final_acquisition_date),''),'2090-01-01')||' 23:59:59')::timestamp
 	GROUP BY li.current_item_effective_location_id,
 		li.holdings_record_id,
-	    li.item_id,
-		li.material_type_id
+	    li.item_id
+--		li.material_type_id
 ),
 data_aquisicao_temp AS ( --Consulta a data de Aquisição e Status PAGO se existirem
 	SELECT distinct jsonb_extract_path_text(inv.jsonb,'paymentDate')::date AS data_de_aquisicao,
@@ -250,6 +250,7 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 				-- Título (com marcação de negrito para fins de exibição)
 --				'<b>' || TRIM(jsonb_extract_path_text(inst.jsonb::jsonb,'title')) || '</b>' || 
 				translate(TRIM(jsonb_extract_path_text(inst.jsonb::jsonb, 'title')),'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789','𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗') ||
+				--CONCAT('**', TRIM(jsonb_extract_path_text(inst.jsonb::jsonb, 'title')), '**') ||
 				-- Edição (Se houver, adiciona ex: " . 3. ed.")
 				CASE 
 					WHEN NULLIF(REPLACE(REPLACE(REPLACE(jsonb_extract_path_text(inst.jsonb::jsonb,'editions'), '[', ''), ']', ''), '"', ''), '') IS NOT NULL 
@@ -287,7 +288,7 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 				-- Código de barras do item / exemplar
 				' Cód.' || jsonb_extract_path_text(item.jsonb::jsonb,'barcode')::text
 			)::text AS referencia_abnt,
-			TRIM(jsonb_extract_path_text(res.jsonb,'copiedItem','uri')) AS URL_PDF_link,
+			TRIM(jsonb_extract_path_text(res.jsonb,'copiedItem','uri')) AS URL_link,
 			isbn_temp.value AS isbn,
 			issn_temp.value AS issn,
 			obs.possui_outras_edicoes,			
@@ -351,13 +352,15 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 			AND total_itens.materialtypeid = item.materialtypeid
 		) AS total_itens ON true
 		LEFT JOIN LATERAL ( --Recupera o total de emprestimos por itens da mesma Biblioteca vinculada ao Plano de Ensino
-		    SELECT holdings_record_id, current_item_effective_location_id, material_type_id, SUM(total_emprestimos_itens_bib_temp) AS total_emprestimos
+		    SELECT holdings_record_id, current_item_effective_location_id, 
+			--material_type_id, 
+			SUM(total_emprest_itens_bib_temp) AS total_emprestimos
 		    FROM total_emprestimos_itens_bib_temp AS total_empr_itens_bib
 		    WHERE total_empr_itens_bib.holdings_record_id = ho.id
 			AND total_empr_itens_bib.current_item_effective_location_id = cl.location_id
 			AND ho.effective_location_id = total_empr_itens_bib.current_item_effective_location_id
-			AND total_empr_itens_bib.material_type_id = item.materialtypeid
-			GROUP BY holdings_record_id, current_item_effective_location_id, material_type_id
+		--	AND total_empr_itens_bib.material_type_id = item.materialtypeid
+			GROUP BY holdings_record_id, current_item_effective_location_id--, material_type_id
 		) AS total_emprestimos_todos_itens_bib ON true
         WHERE
 			c.__current=true
