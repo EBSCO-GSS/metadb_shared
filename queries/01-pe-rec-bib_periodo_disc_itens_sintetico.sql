@@ -349,7 +349,9 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 		    WHERE total_itens.holdingsrecordid = ho.id
 			AND total_itens.effectivelocationid = cl.location_id
 			AND ho.effective_location_id = total_itens.effectivelocationid
-			AND total_itens.materialtypeid = item.materialtypeid
+			--AND total_itens.materialtypeid = item.materialtypeid -- Removido pq Se vinculo no PE por intellectual item e existir itens fisicos, contabiliza tot_itens_fisico_na_bib
+			order by total desc
+			LIMIT 1
 		) AS total_itens ON true
 		LEFT JOIN LATERAL ( --Recupera o total de emprestimos por itens da mesma Biblioteca vinculada ao Plano de Ensino
 		    SELECT holdings_record_id, current_item_effective_location_id, 
