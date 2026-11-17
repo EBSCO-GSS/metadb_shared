@@ -128,6 +128,7 @@ total_itens_temp AS ( --Total de Itens/Exemplares por Biblioteca
 	SELECT holdingsrecordid,effectivelocationid,materialtypeid,COUNT(*) AS total
 	FROM folio_inventory.item
 	WHERE __current = true
+	AND materialtypeid <> '9da6eee1-5000-4274-9099-3dd328638672' --"Electronic resource"
 	GROUP BY holdingsrecordid,effectivelocationid,materialtypeid
 ),
 total_emprestimos_itens_bib_temp AS ( --Total de Empréstimos dos Itens da Biblioteca do Plano de Ensino indicado, total absoluto sem parametro filtro data inicial e final
@@ -343,7 +344,7 @@ titulos_duplicados AS ( -- Identifica os títulos que aparecem mais de uma vez n
 			WHERE
 				obs.title = jsonb_extract_path_text(inst.jsonb::jsonb,'title')
 		) AS obs ON true		
-		LEFT JOIN LATERAL ( --Recupera o total de itens existentes da mesma Biblioteca vinculada ao Plano de Ensino
+		LEFT JOIN LATERAL ( --Recupera o total de itens existentes físico da mesma Biblioteca vinculada ao Plano de Ensino
 		    SELECT total
 		    FROM total_itens_temp AS total_itens
 		    WHERE total_itens.holdingsrecordid = ho.id
